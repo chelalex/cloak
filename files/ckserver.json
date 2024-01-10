@@ -1,0 +1,12 @@
+{
+  "RedirAddr": "www.yandex.ru",
+  "BindAddr": [":443",":80"],
+  "ProxyBook": {
+    "shadowsocks": [
+      "tcp",
+      "localhost:8388"
+    ]
+  },
+  "PrivateKey": "CIlqz1u3lrV1veZNuI9Lf0keVAma9YrPrnTQSDjlzlc=",
+  "BypassUID": ["Op8rna4LEltWTw39C4XKxg=="]
+}

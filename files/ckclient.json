@@ -1,0 +1,11 @@
+{
+  "Transport": "direct",
+  "ProxyMethod": "shadowsocks",
+  "EncryptionMethod": "plain",
+  "UID": "Op8rna4LEltWTw39C4XKxg==",
+  "PublicKey": "b7y8XAIDVd6Oi/nYKKWinIZgU96LEZcymVIOWmSXhw0=",
+  "ServerName": "www.yandex.ru",
+  "NumConn": 4,
+  "BrowserSig": "chrome",
+  "StreamTimeout": 300
+}

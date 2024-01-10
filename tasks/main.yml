@@ -1,0 +1,32 @@
+---
+# tasks file for cloak
+- name: Cloak | Check architecture
+  ansible.builtin.shell: dpkg --print-architecture
+  register: architecture
+
+- name: Cloak | Install curl
+  ansible.builtin.apt:
+    name: curl
+    state: latest
+  become: true
+
+- name: Cloak | Install Cloak
+  ansible.builtin.shell: "curl -LO https://github.com/cbeuw/Cloak/releases/download/v{{ cloak.version }}/ck-{{ inventory_hostname }}-linux-{{ architecture.stdout }}-v{{ cloak.version }}"
+  args:
+    chdir: "/home/{{ ansible_user }}"
+
+- name: Cloak | Move files to /usr/local/bin
+  ansible.builtin.copy:
+    src: "/home/{{ ansible_user }}/ck-{{ inventory_hostname }}-linux-{{ architecture.stdout }}-v{{ cloak.version }}"
+    dest: "/usr/local/bin/ck-{{ inventory_hostname }}"
+    remote_src: true
+  become: true
+
+- name: Cloak | Copy config files
+  ansible.builtin.copy:
+    src: "ck{{ inventory_hostname }}.json"
+    dest: "/etc/shadowsocks-rust/ck{{ inventory_hostname }}.json"
+    owner: root
+    mode: 0644
+  become: true
+
